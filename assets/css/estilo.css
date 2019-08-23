@@ -2,10 +2,16 @@ header {
   width: 100%;
   position: fixed;
   z-index: 2;
+  top: 0;
+  margin-bottom: 800px;
 }
 
 .carousel-item img {
   max-height: 600px;
+}
+
+.container {
+  margin-top: 100px;
 }
 
 .container form textarea {
