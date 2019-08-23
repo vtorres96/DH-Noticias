@@ -1,0 +1,38 @@
+header {
+  width: 100% 
+  position: fixed 
+  z-index: 2 
+}
+
+.carousel-item img {
+  max-height: 600px 
+}
+
+.container form textarea {
+  resize: none 
+}
+
+div.container {
+  min-height: calc(100vh - 194px) 
+}
+
+.name-user {
+  color: #fff 
+  font-size: 18px 
+}
+
+.go-to-top {
+  padding: 5px 3px;
+  background: #000;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  display: none;
+}
+
+footer div {
+  color: #fff 
+  height: 100px 
+  line-height: 100px 
+}
