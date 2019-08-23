@@ -2,35 +2,34 @@
 <html lang="en">
   <?php require_once("inc/head.php")  ?>
 <body>
-
   <?php 
-    session_start() 
-    if($_SESSION){
-      $logado = $_SESSION["logado"] 
-      $nivel_acesso = $_SESSION["nivel_acesso"] 
+  
+    session_start(); 
+  
+    $logado = $_SESSION["logado"];
+    $nivel_acesso = $_SESSION["nivel_acesso"];
 
-      if(!isset($logado)){
-        header("Location: indexLogados.php") 
-      }
-
-      if($nivel_acesso == 0){
-        $active = "redator" 
-      }
+    if(!isset($logado)){
+      header("Location: indexLogados.php");
     }
 
-    require_once("inc/header.php") 
+    if($nivel_acesso == 0){
+      $active = "redator"; 
+    }
 
-    require_once("config/conn.php") 
+    require_once("inc/header.php");
+
+    require_once("config/conn.php");
 
     //SELECIONA A NOTÍCIA
     if (isset($_GET) && $_GET["id"]) {
-      $query = $db->prepare('SELECT * FROM noticias WHERE id = :id') 
+      $query = $db->prepare('SELECT * FROM noticias WHERE id = :id');
       
       $query->execute([
           ":id" => $_GET["id"]
-      ]) 
+      ]);
       
-      $noticia = $query->fetch(PDO::FETCH_ASSOC) 
+      $noticia = $query->fetch(PDO::FETCH_ASSOC);
     }
   ?>
 
@@ -66,7 +65,7 @@
           </div>
         </form>
       <?php else: ?>
-        <form action="utils/salvarCadastroNoticia.php" method="POST" enctype="multipart/form-data">
+        <form action="utils/salvarNoticia.php" method="POST" enctype="multipart/form-data">
           <h1>Cadastro de Notícia</h1>
           <p class="text-muted">Preencha o formulário abaixo para inserir uma nova notícia na plataforma</p>
           <div class="form-row">

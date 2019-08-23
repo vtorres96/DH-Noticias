@@ -3,40 +3,41 @@
   <?php require_once("inc/head.php")  ?>
 <body>
   <?php 
-    session_start() 
+    session_start();
+
     if($_SESSION){
-      $logado = $_SESSION["logado"] 
-      $nivel_acesso = $_SESSION["nivel_acesso"] 
+      $logado = $_SESSION["logado"];
+      $nivel_acesso = $_SESSION["nivel_acesso"];
 
       if(!isset($logado) && $nivel_acesso != 1){
-        header("Location: index.php") 
+        header("Location: index.php");
       }
 
       if($nivel_acesso == 1){
-        $active = "admin" 
+        $active = "admin"; 
       }
     }
 
-    require_once("inc/header.php") 
+    require_once("inc/header.php"); 
 
-    require_once("config/conn.php") 
+    require_once("config/conn.php");
 
     //SELECIONA O USUÁRIO
     if (isset($_GET) && $_GET["id"]) {
-      $query = $db->prepare('SELECT * FROM usuarios WHERE id = :id') 
+      $query = $db->prepare('SELECT * FROM usuarios WHERE id = :id'); 
       
       $query->execute([
           ":id" => $_GET["id"]
-      ]) 
+      ]);
       
-      $usuario = $query->fetch(PDO::FETCH_ASSOC) 
+      $usuario = $query->fetch(PDO::FETCH_ASSOC);
     }
   ?>
 
   <div class="container">
     <div class="mt-5">
       <?php if(isset($usuario) && $usuario): ?>
-      <form action="utils/editarCadastroRedator.php" method="POST">
+      <form action="utils/editarRedator.php" method="POST">
           <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
           <h1>Preencha o formulário para cadastrar um redator</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis eveniet, similique obcaecati qui corporis dolore quisquam placeat incidunt facilis? Facere aspernatur dolorum vitae sequi ut at doloremque, quia aut.</p>
@@ -57,7 +58,7 @@
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       <?php else: ?>
-        <form action="utils/salvarCadastroRedator.php" method="POST">
+        <form action="utils/salvarRedator.php" method="POST">
           <h1>Cadastro de Redatores</h1>
           <p class="text-muted">Preencha o formulário abaixo para cadastrar um novo redator na plataforma</p>
           <div class="form-row">
@@ -88,6 +89,6 @@
     </div>
   </div>
 
-  <?php require_once("inc/footer.php")  ?>
+  <?php require_once("inc/footer.php"); ?>
 </body>
 </html>
