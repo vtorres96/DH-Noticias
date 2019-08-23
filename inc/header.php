@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="assets/img/logo-nahora-oficial.png" width="100" height="40" class="d-inline-block mr-2" alt="Portal Na Hora">
+        <img src="assets/img/logo.png" width="100" height="40" class="d-inline-block mr-2" alt="Portal Na Hora">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
       <span class="navbar-toggler-icon"></span>
