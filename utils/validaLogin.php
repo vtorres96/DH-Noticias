@@ -31,7 +31,7 @@
         $_SESSION["nome"] = $usuario["nome"];
         $_SESSION["nivel_acesso"] = $usuario["nivel_acesso"];
 
-        header("Location: ../indexLogados.php");
+        header("Location: ../index.php");
       }
   }
 

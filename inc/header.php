@@ -29,7 +29,7 @@
           <li class="nav-item">
             <a class="nav-link" href="cadastroNoticia.php">Cadastrar Notícia</a>
           </li>
-          <li class="nav-item">
+            <li class="nav-item">
             <a class="nav-link" href="listandoNoticias.php">Listar Notícias</a>
           </li>
         <?php elseif($active == "comum"): ?>
@@ -45,10 +45,10 @@
           <li class="nav-item">
             <a class="nav-link" href="#localizacao">Localização</a>
           </li>
-        <?php endif  ?>
+        <?php endif;  ?>
       </ul>
       <?php if($active == "admin" || $active == "redator"): ?>
-        <?php session_start()  ?>
+        <?php session_start();  ?>
         <div class="form-inline my-2 my-lg-0">
           <div class="name-user mr-3">Olá, <?= $_SESSION["nome"] ?></div>
           <a href="../utils/logout.php">
