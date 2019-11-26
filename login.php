@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php require_once("inc/head.php")  ?>
+  <?php require_once("inc/head.php"); ?>
 <body>
-  <?php require_once("inc/header.php") ?>
+  <?php $active = "comum"; ?>
+  <?php require_once("inc/header.php"); ?>
 
   <div class="container">
     <div class="mt-5">
-      <form action="utils/validaLogin.php" method="POST">
-        <h1>Preencha o formulário para efetuar login</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis eveniet, similique obcaecati qui corporis dolore quisquam placeat incidunt facilis? Facere aspernatur dolorum vitae sequi ut at doloremque, quia aut.</p>
+      <div class="col-md-12">
+          <h1>Login</h1>
+          <p>Preencha o formulário para efetuar login na nossa plataforma.</p>
+      </div>
+      <form action="utils/auth/validacao.php" method="POST">
         <div class="form-row">
           <div class="form-group col-md-12">
             <div class="col-md-6">
@@ -30,6 +33,6 @@
     </div>
   </div>
 
-  <?php require_once("inc/footer.php")  ?>
+  <?php require_once("inc/footer.php"); ?>
 </body>
 </html>

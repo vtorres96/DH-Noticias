@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <?php require_once("config/conn.php"); ?>
   <?php require_once("inc/head.php"); ?>
 <body>
   <?php 
@@ -20,8 +21,6 @@
     
     require_once("inc/header.php");
 
-    require_once("config/conn.php");
-
     $sql = "SELECT * FROM noticias";
 
     $query = $db->prepare($sql);
@@ -35,7 +34,7 @@
   <div class="container">
     <div class="mt-5">
       <h1>Notícias</h1>
-      <p>Desculpe não temos notícias para você hoje =(</p>
+      <p>Desculpe não temos notícias para você hoje.</p>
     </div>
   </div>
   <?php else: ?>

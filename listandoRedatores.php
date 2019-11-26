@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <?php require_once("config/conn.php"); ?>
   <?php require_once("inc/head.php"); ?>
 <body>
   <?php 
@@ -21,8 +22,6 @@
     }
     
     require_once("inc/header.php");
-
-    require_once("config/conn.php");
 
     // Excluindo usuário
     if (isset($_GET) && $_GET["id"]) {

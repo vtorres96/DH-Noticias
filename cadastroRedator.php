@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php require_once("inc/head.php")  ?>
+  <?php require_once("config/conn.php"); ?>
+  <?php require_once("inc/head.php"); ?>
 <body>
   <?php 
     session_start();
@@ -20,8 +21,6 @@
 
     require_once("inc/header.php"); 
 
-    require_once("config/conn.php");
-
     //SELECIONA O USUÁRIO
     if (isset($_GET) && $_GET["id"]) {
       $query = $db->prepare('SELECT * FROM usuarios WHERE id = :id'); 
@@ -37,7 +36,7 @@
   <div class="container">
     <div class="mt-5">
       <?php if(isset($usuario) && $usuario): ?>
-      <form action="utils/editarRedator.php" method="POST">
+        <form action="utils/redatores/editar.php" method="POST">
           <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
           <h1>Preencha o formulário para cadastrar um redator</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis eveniet, similique obcaecati qui corporis dolore quisquam placeat incidunt facilis? Facere aspernatur dolorum vitae sequi ut at doloremque, quia aut.</p>
@@ -58,7 +57,7 @@
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       <?php else: ?>
-        <form action="utils/salvarRedator.php" method="POST">
+        <form action="utils/redatores/salvar.php" method="POST">
           <h1>Cadastro de Redatores</h1>
           <p class="text-muted">Preencha o formulário abaixo para cadastrar um novo redator na plataforma</p>
           <div class="form-row">
@@ -85,7 +84,7 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
         </form>
-      <?php endif  ?>
+      <?php endif;  ?>
     </div>
   </div>
 

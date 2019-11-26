@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php require_once("inc/head.php")  ?>
+  <?php require_once("config/conn.php"); ?>
+  <?php require_once("inc/head.php");  ?>
 <body>
   <?php 
   
@@ -19,8 +20,6 @@
 
     require_once("inc/header.php");
 
-    require_once("config/conn.php");
-
     //SELECIONA A NOTÍCIA
     if (isset($_GET) && $_GET["id"]) {
       $query = $db->prepare('SELECT * FROM noticias WHERE id = :id');
@@ -33,12 +32,13 @@
     }
   ?>
 
-  <div class="container">
-    <div class="mt-5">
+  <div class="container mt-5">
       <?php if(isset($noticia) && $noticia): ?>
-        <form action="utils/editarNoticia.php" method="POST" enctype="multipart/form-data">
+        <div class="col-md-6">
           <h1>Alteração de Notícia</h1>
           <p class="text-muted">Preencha as informações que deseja alterar esta notícia na plataforma</p>
+        </div>
+        <form action="utils/noticias/editar.php" method="POST" enctype="multipart/form-data">
           <div class="form-row">
             <div class="form-group col-md-12">
               <div class="col-md-6">
@@ -65,14 +65,16 @@
           </div>
         </form>
       <?php else: ?>
-        <form action="utils/salvarNoticia.php" method="POST" enctype="multipart/form-data">
+        <div class="col-md-6">
           <h1>Cadastro de Notícia</h1>
           <p class="text-muted">Preencha o formulário abaixo para inserir uma nova notícia na plataforma</p>
+        </div>
+        <form action="utils/noticias/salvar.php" method="POST" enctype="multipart/form-data">
           <div class="form-row">
             <div class="form-group col-md-12">
               <div class="col-md-6">
                 <label for="input-titulo">Título</label>
-                <input type="text" value="<?= $noticia["titulo"] ?>" class="form-control" name="titulo" id="input-titulo" placeholder="Insira o título">
+                <input type="text" class="form-control" name="titulo" id="input-titulo" placeholder="Insira o título da sua notícia">
               </div>
             </div>
             <div class="form-group col-md-12">
@@ -92,10 +94,9 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
           </div>
         </form>
-      <?php endif  ?>
-    </div>
+      <?php endif; ?>
   </div>
 
-  <?php require_once("inc/footer.php")  ?>
+  <?php require_once("inc/footer.php"); ?>
 </body>
 </html>
