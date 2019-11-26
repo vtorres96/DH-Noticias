@@ -1,5 +1,5 @@
 <?php
-  require_once("../config/conn.php");
+  require_once("../../config/conn.php");
 
   $titulo = $_REQUEST["titulo"];
   $descricao = $_REQUEST["descricao"];

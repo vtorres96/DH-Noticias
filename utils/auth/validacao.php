@@ -1,5 +1,5 @@
 <?php
-  require_once("../config/conn.php");
+  require_once("../../config/conn.php");
 
   $email = $_REQUEST["email"];
   $senha = $_REQUEST["senha"];
@@ -23,7 +23,7 @@
       if(!$senhaValida){
         $erro = true;
       } else {
-        // Se encontrar usuário e a senha bater criamos sessão
+        // Se encontrar usuário e a senha estiver correta criamos sessão
         // e redirecionamos o usuário
         session_start();
 
@@ -31,7 +31,7 @@
         $_SESSION["nome"] = $usuario["nome"];
         $_SESSION["nivel_acesso"] = $usuario["nivel_acesso"];
 
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
       }
   }
 

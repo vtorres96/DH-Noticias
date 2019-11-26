@@ -1,5 +1,5 @@
 <?php
-  require_once("../config/conn.php");
+  require_once("../../config/conn.php");
 
   $nome = $_REQUEST["nome"];
   $email = $_REQUEST["email"];
