@@ -11,7 +11,7 @@
           <h1>Login</h1>
           <p>Preencha o formulário para efetuar login na nossa plataforma.</p>
       </div>
-      <form action="utils/auth/validacao.php" method="POST">
+      <form id="formulario" action="utils/auth/validacao.php" method="POST">
         <div class="form-row">
           <div class="form-group col-md-12">
             <div class="col-md-6">
@@ -27,12 +27,15 @@
           </div>
         </div>
         <div class="col-md-12">
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button id="salvar" type="submit" class="btn btn-primary">Enviar</button>
         </div>
+        <div id="mensagem"></div>
       </form>
     </div>
   </div>
 
   <?php require_once("inc/footer.php"); ?>
+  <script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+  <script type="text/javascript" src="ajax/validatorLogin.js"></script>
 </body>
 </html>
