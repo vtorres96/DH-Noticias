@@ -1,3 +1,21 @@
+<?php
+  if(!isset($_SESSION)) { 
+      session_start(); 
+  } 
+
+  if($_SESSION){
+    $logado = $_SESSION["logado"];
+    $nivel_acesso = $_SESSION["nivel_acesso"];
+    
+    if($nivel_acesso == 1){
+      $active = "admin";
+    } elseif($nivel_acesso == 0){
+      $active = "redator";
+    }
+  } else { 
+      $active = "comum";
+  }
+?>
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
@@ -14,13 +32,10 @@
               <a class="nav-link text-white" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="cadastroRedator.php">Cadastro de Redator</a>
+              <a class="nav-link text-white" href="listandoRedatores.php">Redatores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="listandoRedatores.php">Listar Redatores</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="listandoNoticias.php">Listar Notícias</a>
+              <a class="nav-link text-white" href="listandoNoticias.php">Notícias</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -36,11 +51,8 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="index.php">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="cadastroNoticia.php">Cadastrar Notícia</a>
-            </li>
               <li class="nav-item">
-              <a class="nav-link text-white" href="listandoNoticias.php">Listar Notícias</a>
+              <a class="nav-link text-white" href="listandoNoticias.php">Notícias</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
