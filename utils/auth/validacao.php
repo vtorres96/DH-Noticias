@@ -1,6 +1,8 @@
 <?php
   require_once("../../config/conn.php");
 
+  require_once("../returnMessage.php");
+
   $email = $_REQUEST["email"];
   $senha = $_REQUEST["senha"];
 
@@ -16,27 +18,24 @@
 
   // Se não encontrar usuário retonarmos erro
   if(!$usuario){
-    $erro = true;
+    echo retornaMensagem("Usuário não encontrado");
+    return;
   } else {
       // Se a senha não conferir com a do banco de dados
       $senhaValida = password_verify($senha, $usuario["senha"]);
       if(!$senhaValida){
-        $erro = true;
+        echo retornaMensagem("Usuário ou senha inválidos");
+        return;
       } else {
         // Se encontrar usuário e a senha estiver correta criamos sessão
         // e redirecionamos o usuário
         session_start();
-
         $_SESSION["logado"] = true;
         $_SESSION["nome"] = $usuario["nome"];
         $_SESSION["nivel_acesso"] = $usuario["nivel_acesso"];
 
-        header("Location: ../../index.php");
+        echo retornaMensagem("Redirecionando...", true);
       }
-  }
-
-  if(isset($erro) && $erro === true){
-    echo "Usuário ou senha inválidos";
   }
 
 ?>
