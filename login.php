@@ -29,7 +29,9 @@
         <div class="col-md-12">
           <button id="salvar" type="submit" class="btn btn-primary">Enviar</button>
         </div>
-        <div id="mensagem"></div>
+        <div class="col-md-12">
+          <div id="mensagem"></div>
+        </div>
       </form>
     </div>
   </div>

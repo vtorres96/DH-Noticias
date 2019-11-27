@@ -54,16 +54,16 @@
         <?php elseif($active == "comum"): ?>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Home</a>
+              <a class="nav-link text-white" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#noticias">Notícias</a>
+              <a class="nav-link text-white" href="index.php#noticias">Notícias</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#contato">Contato</a>
+              <a class="nav-link text-white" href="index.php#contato">Contato</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#localizacao">Localização</a>
+              <a class="nav-link text-white" href="index.php#localizacao">Localização</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
