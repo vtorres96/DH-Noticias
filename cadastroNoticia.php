@@ -1,27 +1,19 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION["logado"])){
+      header("Location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <?php require_once("config/conn.php"); ?>
   <?php require_once("inc/head.php");  ?>
 <body>
-  <?php 
-  
-    session_start(); 
-  
-    $logado = $_SESSION["logado"];
-    $nivel_acesso = $_SESSION["nivel_acesso"];
-
-    if(!isset($logado)){
-      header("Location: indexLogados.php");
-    }
-
-    if($nivel_acesso == 0){
-      $active = "redator"; 
-    }
-
-    require_once("inc/header.php");
-
+  <?php require_once("inc/header.php"); ?>
+  <?php
     //SELECIONA A NOTÍCIA
-    if (isset($_GET) && $_GET["id"]) {
+    if (isset($_GET) && $_GET && $_GET["id"]) {
       $query = $db->prepare('SELECT * FROM noticias WHERE id = :id');
       
       $query->execute([
@@ -98,5 +90,6 @@
   </div>
 
   <?php require_once("inc/footer.php"); ?>
+  <?php require_once("inc/scripts.php"); ?>
 </body>
 </html>

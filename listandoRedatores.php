@@ -1,30 +1,19 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION["logado"]) && $_SESSION["nivel_acesso"] != 1){
+      header("Location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <?php require_once("config/conn.php"); ?>
   <?php require_once("inc/head.php"); ?>
 <body>
-  <?php 
-    session_start();
-
-    $logado = $_SESSION["logado"];
-    $nivel_acesso = $_SESSION["nivel_acesso"];
-    
-    if(!isset($logado)){
-      header("Location: index.php");
-    }
-
-    if($nivel_acesso != 1){
-      header("Location: index.php");
-    }
-
-    if($nivel_acesso == 1){
-      $active = "admin";
-    }
-    
-    require_once("inc/header.php");
-
+  <?php require_once("inc/header.php"); ?>
+  <?php
     // Excluindo usuário
-    if (isset($_GET) && $_GET["id"]) {
+    if (isset($_GET) && $_GET && $_GET["id"]) {
       $query = $db->prepare('DELETE FROM usuarios WHERE id = :id');
       
       $query->execute([
@@ -33,9 +22,7 @@
     }
 
     $sql = "SELECT * FROM usuarios WHERE nivel_acesso = :nivel_acesso";
-
     $query = $db->prepare($sql);
-
     $query->execute([
       ":nivel_acesso" => 0
     ]);
@@ -45,16 +32,23 @@
 
   <?php if(!$redatores): ?>
   <div class="container">
-    <div class="mt-5">
-      <h1>Redatores</h1>
-      <p>Desculpe não temos redatores para listar</p>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <p>Verifique abaixo os redatores cadastrados em nossa plataforma</p>
+      <a href="cadastroRedator.php">
+        <button class="btn btn-primary">Novo Redator</button>
+      </a>
     </div>
   </div>
   <?php else: ?>
     <div class="container">
       <div class="mt-5">
         <h1>Redatores</h1>
-        <p>Verifique abaixo os redatores cadastrados em nossa plataforma</p>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p>Verifique abaixo os redatores cadastrados em nossa plataforma</p>
+          <a href="cadastroRedator.php">
+            <button class="btn btn-primary">Novo Redator</button>
+          </a>
+        </div>
         <div class="table-responsive">
           <table class="table table-bordered table-hover">
               <thead>
@@ -113,5 +107,6 @@
   <?php endif; ?>
 
   <?php require_once("inc/footer.php"); ?>
+  <?php require_once("inc/scripts.php"); ?>
 </body>
 </html>

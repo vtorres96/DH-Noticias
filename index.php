@@ -2,24 +2,7 @@
 <html lang="en">
   <?php require_once("inc/head.php");  ?>
 <body>
-  <?php   
-    session_start();
-
-    if($_SESSION){
-      $logado = $_SESSION["logado"];
-      $nivel_acesso = $_SESSION["nivel_acesso"];
-      
-      if($nivel_acesso == 1){
-        $active = "admin";
-      } elseif($nivel_acesso == 0){
-        $active = "redator";
-      }
-    } else { 
-        $active = "comum";
-    }
-
-    require_once("inc/header.php");
-  ?>
+  <?php require_once("inc/header.php"); ?>
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -104,5 +87,6 @@
     </main>
   
   <?php require_once("inc/footer.php"); ?>
+  <?php require_once("inc/scripts.php"); ?>
 </body>
 </html>

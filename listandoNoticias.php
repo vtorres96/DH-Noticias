@@ -3,28 +3,10 @@
   <?php require_once("config/conn.php"); ?>
   <?php require_once("inc/head.php"); ?>
 <body>
-  <?php 
-    session_start();
-
-    $logado = $_SESSION["logado"];
-    $nivel_acesso = $_SESSION["nivel_acesso"];
-
-    if(!isset($logado)){
-      header("Location: index.php");
-    }
-
-    if($nivel_acesso == 1){
-      $active = "admin";
-    } elseif($nivel_acesso == 0)  {
-      $active = "redator";
-    }
-    
-    require_once("inc/header.php");
-
+  <?php require_once("inc/header.php"); ?>
+  <?php
     $sql = "SELECT * FROM noticias";
-
     $query = $db->prepare($sql);
-
     $query->execute();
 
     $noticias = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -34,14 +16,25 @@
   <div class="container">
     <div class="mt-5">
       <h1>Notícias</h1>
-      <p>Desculpe não temos notícias para você hoje.</p>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <p>Verifique abaixo as notícias mais cadastradas em nossa plataforma</p>
+          <a href="cadastroNoticia.php">
+            <button class="btn btn-primary">Nova Notícia</button>
+          </a>
+        </div>
     </div>
   </div>
   <?php else: ?>
     <div class="container">
       <div class="mt-5">
         <h1>Notícias</h1>
-        <p>Verifique abaixo as notícias mais recentes em nossa plataforma</p>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p>Verifique abaixo as notícias mais cadastradas em nossa plataforma</p>
+            <a href="cadastroNoticia.php">
+              <button class="btn btn-primary">Nova Notícia</button>
+            </a>
+          </div>
+        </div>
         <div class="card-deck">
           <?php foreach($noticias as $noticia): ?>
             <div class="card col-4 col-md-4 col-sm-10">
@@ -61,5 +54,6 @@
   <?php endif; ?>
 
   <?php require_once("inc/footer.php"); ?>
+  <?php require_once("inc/scripts.php"); ?>
 </body>
 </html>

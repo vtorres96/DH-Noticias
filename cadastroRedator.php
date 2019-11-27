@@ -1,28 +1,19 @@
+<?php
+    session_start();
+    
+    if(!isset($_SESSION["logado"]) && $_SESSION["nivel_acesso"] != 1){
+      header("Location: index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <?php require_once("config/conn.php"); ?>
   <?php require_once("inc/head.php"); ?>
 <body>
-  <?php 
-    session_start();
-
-    if($_SESSION){
-      $logado = $_SESSION["logado"];
-      $nivel_acesso = $_SESSION["nivel_acesso"];
-
-      if(!isset($logado) && $nivel_acesso != 1){
-        header("Location: index.php");
-      }
-
-      if($nivel_acesso == 1){
-        $active = "admin"; 
-      }
-    }
-
-    require_once("inc/header.php"); 
-
+  <?php require_once("inc/header.php"); ?>
+  <?php
     //SELECIONA O USUÁRIO
-    if (isset($_GET) && $_GET["id"]) {
+    if (isset($_GET) && $_GET && $_GET["id"]) {
       $query = $db->prepare('SELECT * FROM usuarios WHERE id = :id'); 
       
       $query->execute([
@@ -36,7 +27,7 @@
   <div class="container">
     <div class="mt-5">
       <?php if(isset($usuario) && $usuario): ?>
-        <form action="utils/redatores/editar.php" method="POST">
+        <form id="formulario" action="utils/redatores/editar.php" method="POST">
           <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
           <h1>Preencha o formulário para cadastrar um redator</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis eveniet, similique obcaecati qui corporis dolore quisquam placeat incidunt facilis? Facere aspernatur dolorum vitae sequi ut at doloremque, quia aut.</p>
@@ -57,7 +48,7 @@
           <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
       <?php else: ?>
-        <form action="utils/redatores/salvar.php" method="POST">
+        <form id="formulario" action="utils/redatores/salvar.php" method="POST">
           <h1>Cadastro de Redatores</h1>
           <p class="text-muted">Preencha o formulário abaixo para cadastrar um novo redator na plataforma</p>
           <div class="form-row">
@@ -89,5 +80,6 @@
   </div>
 
   <?php require_once("inc/footer.php"); ?>
+  <?php require_once("inc/scripts.php"); ?>
 </body>
 </html>

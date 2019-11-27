@@ -37,9 +37,7 @@
   </div>
 
   <?php require_once("inc/footer.php"); ?>
-  <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-  <script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+  <?php require_once("inc/scripts.php"); ?>
   <script type="text/javascript" src="ajax/validatorLogin.js"></script>
 </body>
 </html>
