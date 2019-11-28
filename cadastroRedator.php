@@ -27,30 +27,42 @@
   <div class="container">
     <div class="mt-5">
       <?php if(isset($usuario) && $usuario): ?>
+        <div class="col-12 col-md-12 col-lg-12">
+          <h1>Alteração de Cadastro</h1>
+          <p class="text-muted">Preencha o as informações que deseja alterar deste redator.</p>
+        </div>
         <form id="formulario" action="utils/redatores/editar.php" method="POST">
           <input type="hidden" name="id" value="<?= $_GET["id"] ?>">
-          <h1>Preencha o formulário para cadastrar um redator</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum reiciendis eveniet, similique obcaecati qui corporis dolore quisquam placeat incidunt facilis? Facere aspernatur dolorum vitae sequi ut at doloremque, quia aut.</p>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="input-nome">Nome</label>
-              <input type="text" value="<?= $usuario["nome"] ?>" class="form-control" name="nome" id="input-nome" placeholder="Insira seu nome">
+              <div class="col-md-6">
+                <label for="input-nome">Nome</label>
+                <input type="text" value="<?= $usuario["nome"] ?>" class="form-control" name="nome" id="input-nome" placeholder="Insira seu nome">
+              </div>
             </div>
             <div class="form-group col-md-12">
-              <label for="input-email">E-mail</label>
-              <input type="text" value="<?= $usuario["email"] ?>" class="form-control" name="email" id="input-email" placeholder="Email@exemplo.com">
+              <div class="col-md-6">
+                <label for="input-email">E-mail</label>
+                <input type="text" value="<?= $usuario["email"] ?>" class="form-control" name="email" id="input-email" placeholder="Email@exemplo.com">
+              </div>
             </div>
             <div class="form-group col-md-12">
-              <label for="input-senha">Senha</label>
-              <input type="password" class="form-control" name="senha" id="input-senha" placeholder="Insira sua senha">
+              <div class="col-md-6">
+                <label for="input-senha">Senha</label>
+                <input type="password" class="form-control" name="senha" id="input-senha" placeholder="Insira sua senha">
+              </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
         </form>
       <?php else: ?>
-        <form id="formulario" action="utils/redatores/salvar.php" method="POST">
+        <div class="col-12 col-md-12 col-lg-12">
           <h1>Cadastro de Redatores</h1>
-          <p class="text-muted">Preencha o formulário abaixo para cadastrar um novo redator na plataforma</p>
+          <p class="text-muted">Preencha o formulário abaixo para cadastrar um redator na plataforma.</p>
+        </div>
+        <form id="formulario" action="utils/redatores/salvar.php" method="POST">
           <div class="form-row">
             <div class="form-group col-md-12">
               <div class="col-md-6">
@@ -81,5 +93,6 @@
 
   <?php require_once("inc/footer.php"); ?>
   <?php require_once("inc/scripts.php"); ?>
+  <script type="text/javascript" src="ajax/validatorCreate.js"></script>
 </body>
 </html>
