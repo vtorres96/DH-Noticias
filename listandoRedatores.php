@@ -32,11 +32,14 @@
 
   <?php if(!$redatores): ?>
   <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <p>Verifique abaixo os redatores cadastrados em nossa plataforma</p>
-      <a href="cadastroRedator.php">
-        <button class="btn btn-primary">Novo Redator</button>
-      </a>
+    <div class="mt-5">
+      <h1>Redatores</h1>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p>No momento não existem redatores cadastrados na plataforma, adicione uma novo redator.</p>
+          <a href="cadastroRedator.php">
+            <button class="btn btn-primary">Novo Redator</button>
+          </a>
+        </div>
     </div>
   </div>
   <?php else: ?>
@@ -66,7 +69,7 @@
                     <td><?= $redator['email'] ?></td>
                     <td><?= $redator['nivel_acesso'] ?></td>
                     <td>
-                      <a href="cadastroRedator.php?id=<?= $redator["id"] ?>">
+                      <a href="editaRedator.php?id=<?= $redator["id"] ?>">
                         <i class="fas fa-edit"></i>
                       </a>
                     </td>

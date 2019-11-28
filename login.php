@@ -7,7 +7,7 @@
 
   <div class="container">
     <div class="mt-5">
-      <div class="col-md-12">
+      <div class="col-12 col-md-12 col-lg-12">
           <h1>Login</h1>
           <p>Preencha o formulário para efetuar login na nossa plataforma.</p>
       </div>

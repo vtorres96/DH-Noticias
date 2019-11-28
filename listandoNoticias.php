@@ -16,8 +16,8 @@
   <div class="container">
     <div class="mt-5">
       <h1>Notícias</h1>
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <p>Verifique abaixo as notícias mais cadastradas em nossa plataforma</p>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <p>No momento não existem notícias na plataforma, adicione uma nova notícia.</p>
           <a href="cadastroNoticia.php">
             <button class="btn btn-primary">Nova Notícia</button>
           </a>
@@ -28,8 +28,8 @@
     <div class="container">
       <div class="mt-5">
         <h1>Notícias</h1>
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <p>Verifique abaixo as notícias mais cadastradas em nossa plataforma</p>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <p>Verifique abaixo as notícias mais cadastradas em nossa plataforma</p>
             <a href="cadastroNoticia.php">
               <button class="btn btn-primary">Nova Notícia</button>
             </a>
@@ -37,16 +37,20 @@
         </div>
         <div class="card-deck">
           <?php foreach($noticias as $noticia): ?>
-            <div class="card col-4 col-md-4 col-sm-10">
-              <a href="cadastroNoticia.php?id=<?= $noticia["id"] ?>">
-                <img class="card-img-top img-fluid" src="<?= $noticia["imagem"] ?>" alt="Imagem de capa do card">
-              </a>
+          <div class="col-12 col-md-6 col-lg-4 mt-3">
+            <div class="card h-100">
+              <img class="card-img-top img-fluid mt-2" src="<?= $noticia["imagem"] ?>" alt="Imagem de capa do card">
               <div class="card-body">
                 <h5 class="card-title"><?= $noticia["titulo"] ?></h5>
                 <p class="card-text"><?= $noticia["descricao"] ?></p>
-                <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
+                <p class="card-text">
+                  <small class="text-muted">
+                    Atualizada em <?= date('d/m/Y', strtotime($noticia['data_atualizacao'])); ?>
+                  </small>
+                </p>
               </div>
             </div>
+          </div>
           <?php endforeach; ?>
         </div>
       </div>
