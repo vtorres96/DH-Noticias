@@ -8,16 +8,23 @@
     if($_FILES["imagem"]["error"] == UPLOAD_ERR_OK) {
       $nomeImg = $_FILES["imagem"]["name"];
       $nomeTemp = $_FILES["imagem"]["tmp_name"];
-      // caminho até pasta atual => pasta utils
+
+      // caminho até pasta em que se encontra este arquivo => pasta noticias
       $caminho = dirname(__FILE__);
+      
       // caminho onde desejamos inserir nossos uploads
-      $caminhoDesejado = "assets/img/uploads/";
+      $caminhoUploads = "assets/img/uploads/";
 
       // caminho definitivo onde iremos armazenar os uploads
-      $caminhoDefinitivo = str_replace("utils", $caminhoDesejado, $caminho);
+      $caminhoDefinitivo = str_replace("utils\\noticias", $caminhoUploads, $caminho);
 
       // obtendo caminho e imagem que foi feito uploads
       $caminhoCompleto = $caminhoDefinitivo . $nomeImg;
+
+      // echo "Caminho: " . $caminho . "<br>";
+      // echo "Caminho Uploads: " . $caminhoUploads . "<br>";
+      // echo "Caminho Completo: " . $caminhoCompleto;
+      // exit;
 
       // movendo imagem para pasta uploads
       $moveu = move_uploaded_file($nomeTemp, $caminhoCompleto);
@@ -31,7 +38,7 @@
 
   $salvou = $query->execute([
     ":titulo" => $titulo,
-    ":imagem" => $caminhoDesejado.$nomeImg,
+    ":imagem" => $caminhoUploads.$nomeImg,
     ":descricao" => $descricao
   ]); 
 
